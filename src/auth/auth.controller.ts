@@ -3,6 +3,7 @@ import { AuthService } from './auth.service';
 import { SignUpDto } from './dto/sign-up.dto';
 import { SignInDto } from './dto/sign-in.dto';
 import type { Request, Response } from 'express';
+import { ResponseMessage } from 'src/common/decorators/response.decorator';
 
 @Controller('auth')
 export class AuthController {
@@ -15,6 +16,7 @@ export class AuthController {
         return this.authService.signUp(payload);
     }
 
+    @ResponseMessage('Sign in successfully')
     @Post('sign-in')
     async signIn(
         @Body() payload: SignInDto, 
